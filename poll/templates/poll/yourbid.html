@@ -1,0 +1,43 @@
+{% extends "poll/pfilelout.html" %}
+
+
+{% block title %}
+   My Bid
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+<h1 style="background-color:black;color:white;height:5em;width:100%;text-align:center;padding-top:2em;border-radius:1em;"> My Bid</h1>
+<hr>
+
+
+  {% for items in bids %}
+
+     <div class="row no-gutters bg-light position-relative">
+     <div class="col-md-6 mb-md-0 p-md-4">
+     <img style="width:10em;height:10em;" src="{{ items.picture.url }}" class="w-100" alt="...">
+     </div>
+     <div class="col-md-6 position-static p-4 pl-md-0">
+     <h5 class="mt-0">{{ items.name }}</h5>
+     <p>Catergory : {{ items.get_catergory_display}}
+        <br>Description : {{items.description}}<br>
+            Price : {{ items.price }}<br></p>
+     <form method='get' action="{% url 'poll:comment' %}">
+     {% csrf_token %}
+     <input type="hidden" name="user" value="{{ items.user.username }}">
+     <input type="hidden" name="pdt_name" value="{{ items.name }}">
+     <input type="submit" class="btn btn-primary stretched-link" value="Comment">
+     </form>
+     <form method='get' action="{% url 'poll:pbid' %}">
+     {% csrf_token %}
+     <input type="hidden" name="user" value="{{ items.user.username }}">
+     <input type="hidden" name="pdt_name" value="{{ items.name }}">
+     <br>
+     <input type="submit" class="btn btn-primary stretched-link" value="Bid">
+     </form>
+     </div>
+     </div>
+  {% endfor %}
+</div>
+{% endblock %}

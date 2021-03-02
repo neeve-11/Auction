@@ -1,0 +1,45 @@
+{% extends "poll/pfilelout.html" %}
+{% load static %}
+{% block title %}
+   Comment
+{% endblock %}
+
+
+{% block body %}
+     <div class="container">
+     <h1 style="background-color:black;color:white;height:5em;width:100%;text-align:center;padding-top:2em;border-radius:1em;">{{ item.name }}</h1>
+     <hr>
+     <img style="width:50%;display:block;margin-left:auto;margin:auto;" src="{{ item.picture.url }}" alt="...">
+     <br>
+     <div class="card">
+     <div class="card-body">
+        <h3> Specifications </h3>
+        <hr>
+        <span style="font-family:'Indie Flower';">Catergory   :</span>  {{ item.get_catergory_display }}<br>
+        <span style="font-family:'Indie Flower';">Username    :</span> {{ item.user.username }}<br>
+        <span style="font-family:'Indie Flower';">Description :</span> {{item.description}}<br>
+        <span style="font-family:'Indie Flower';">Price       :</span> {{ item.price }}
+     </div>
+     </div>
+      <h1><img style="margin-radius:50%; height:1em;weight:1em" src="{% static '/media/profileimg.png' %}">Your Comment</h1>
+      <br><h2>{{ puser }}</h2><br>
+      <form method='post' action="{% url 'poll:comment' %}">
+      {% csrf_token %}
+      <textarea name="c_comment" row="30" cols="50"></textarea>
+      <input name="pdt" type="hidden" value="{{ item.name }}">
+      <input name="itemc" type="hidden" value="{{ item.user.username }}">
+      <br>
+      <input class="btn btn-success" type="submit" value="post">
+      </form>
+      <br>
+      <h1><img style="margin-radius:50%; height:1em;weight:1em" src="{% static '/media/profileimg.png' %}">All Comments</h1>
+      {% for comment in comments %}
+          <div class="card" style="background-color: #eee;" >
+          <div class="card-body">
+          <h2><span style="font-family:'Indie Flower';">{{comment.user.username}}</span></h2><br>
+          <p>{{comment.c_comment}}</p><br>
+          </div>
+      {% endfor %}
+      </div>
+      </div>
+{% endblock %}

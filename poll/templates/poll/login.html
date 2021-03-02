@@ -1,0 +1,44 @@
+{% extends "poll/layout.html" %}
+{% load static %}
+{% block body %}
+
+        <div class="container" sytle="">
+          <h1> Login </h1>
+          <hr>
+        {% if messages %}
+             {{ messages }}
+        {% endif %}
+        {% if form.errors %}
+            {% for field in form %}
+                    <div sytle="background-color:red;opacity:0.5;padding:1em 1em;">{{ field.errors }}</div>
+                 <br>
+            {% endfor %}
+        {% endif %}
+        {% if form.non_field_error %}
+            {% for error in form.non_field_error %}
+                 <div sytle="background-color:red;opacity:0.5;padding:1em 1em;">{{ error }}</div>
+                 <br>
+            {% endfor %}
+        {% endif %}
+        <form action="{% url 'poll:clogin' %}" method=POST>
+            {% csrf_token %}
+            <label>Email</label>
+            <br>
+            {{form.email}}
+            <br>
+            <label>Password</label>
+            <br>
+            {{form.password}}
+            <br>
+            <br>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Login">
+        </form>
+        </div>
+        <div class="f1"class="p-3 mb-2 bg-dark text-white">
+            <span style="font-family:'Indie Flower';text-shadow: 0.1em 0.1em blue;margin-left:0em;">Auction in my style</span>
+            <span style="float:left"> Neevetha.S(122010568) </span>
+            <br>
+            <span style="font-family:'Indie Flower';text-shadow: 0.1em 0.1em blue;margin-left:10em;"> Letzz get the party started </span>
+        </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "poll/pfilelout.html" %}
+{% block title %}
+Create Your Bid
+{% endblock %}
+{% block body %}
+  <div class="container">
+  <h1 style="background-color:black;color:white;height:5em;width:100%;text-align:center;padding-top:2em;border-radius:1em;"> Create Your Bid</h1>
+  <hr>
+  {% if message %}
+     {{ message }}
+  {% endif %}
+  <form method="POST" action="{% url 'poll:cbid' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+  <div class="fieldWrapper">
+  <label for="{{ form.name.id_for_label }}">Product Name</label>
+  <br>
+  {{ form.name }}
+  </div>
+  <div class="fieldWrapper">
+  <label for="{{ form.price.id_for_label }}">Bidding price</label>
+  <br>
+  {{ form.price }}
+  </div>
+  <div class="fieldWrapper">
+  <label for="{{ form.catergory.id_for_label }}">Catergory</label>
+  <br>
+  {{ form.catergory }}
+  </div>
+  <div class="fieldWrapper">
+  <label for="{{ form.picture.id_for_label }}">Upload Picture</label>
+  <br>
+  {{ form.picture }}
+  </div>
+  <div class="fieldWrapper">
+  <label for="{{ form.description.id_for_label }}">Description</label>
+  <br>
+  {{ form.description }}
+  </div>
+  <br>
+  <br>
+  <input class="btn btn-primary" type="submit" value="Bid">
+  </form>
+  <div>
+{% endblock %}

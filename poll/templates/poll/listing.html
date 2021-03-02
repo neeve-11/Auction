@@ -1,0 +1,41 @@
+{% extends "poll/layout.html" %}
+{% load static %}
+{% block title %}
+     List of items
+{% endblock %}
+{% block body %}
+
+       <div class="container" sytle="">
+         <h1 >Items for auction</h1>
+         <hr>
+         {% for item in items %}
+         <div class="row no-gutters bg-light position-relative">
+         <div class="col-md-6 mb-md-0 p-md-4">
+         <img style="width:10em;height:10em;" src="{{ item.picture.url }}" class="w-100" alt="...">
+         </div>
+         <div class="col-md-6 position-static p-4 pl-md-0">
+         <h2 class="mt-0">{{ item.name }}</h2>
+         <p>Catergory : {{ item.get_catergory_display}}
+            <br>Description : {{item.description}}<br>
+                Price : {{ item.price }}<br></p>
+                <form method="post" action="{% url 'poll:login' %}">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-primary stretched-link" value="Bid">
+                </form>
+          </div>
+          </div>
+         {% endfor %}
+        </div>
+
+
+       <div class="f1" style="position:relative;width:100%;" class="p-3 mb-2 bg-dark text-white">
+
+       <!-- Footer Links -->
+       <!---div class="container-fluid text-center text-md-left"-->
+
+           <span style="font-family:'Indie Flower';text-shadow: 0.1em 0.1em blue;margin-left:0em;">Auction in my style</span>
+           <span style="float:left"> Neevetha.S(122010568) </span>
+           <br>
+           <span style="font-family:'Indie Flower';text-shadow: 0.1em 0.1em blue;margin-left:10em;"> Letzz get the party started </span>
+         </div>
+ {% endblock %}

@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+  <style>
+     body{
+       font-size : 16px
+     }
+
+       .sidebar {
+     margin: 0;
+     padding: 0;
+     width: 200px;
+     background-color: black;
+     position: fixed;
+     height: 100%;
+     overflow: auto;
+   }
+
+   .sidebar a {
+     display: block;
+     color: white;
+     padding: 16px;
+     text-decoration: none;
+   }
+
+   .sidebar a.active {
+     background-color: #4CAF50;
+     color: white;
+   }
+
+   .sidebar a:hover:not(.active) {
+     background-color: #555;
+     color: white;
+   }
+
+   div.content {
+     margin-left: 200px;
+     padding: 1px 16px;
+     height: 1000px;
+   }
+
+
+</style>
+<body>
+  <div class="sidebar">
+    <img style="positon:absolute;left:1em;border-radius:50%;width:4.5em;height:4.5em;"  src="{% static '/media/auction.jpg' %}" alt="Good to go">
+    <h3 style="color:white;"> Neevetha.S</h3>
+    <h3 style="color:white;">(122015068)</h3>
+    <a href="{% url 'poll:inbox' %}">Home</a>
+    <a href="{% url 'poll:listl' %}">Items</a>
+    <a href="{% url 'poll:createbid' %}">Create Bid</a>
+    <a href="{% url 'poll:mybid' %}">My Bids</a>
+    <a href="{% url 'poll:logout' %}">Logout</a>
+
+
+  </li>
+  </div>
+  <div class="content">
+    {% block body %}
+
+    {% endblock %}
+
+  </div>
+
+  </body>
+</html>

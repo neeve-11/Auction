@@ -1,0 +1,21 @@
+{% extends "poll/pfilelout.html" %}
+
+
+{% block title %}
+   Bid
+{% endblock %}
+
+
+{% block body %}
+    <h1 style="background-color:black;color:white;height:5em;width:100%;text-align:center;padding-top:2em;border-radius:1em;"> Bid For Item</h1>
+    <hr>
+    <form method="POST" action="{% url 'poll:result' %}">
+    {% csrf_token %}
+    <label style="font-family:'Indie Flower';"> <bold>QUOTE YOUR BIDING PRICE FOR THIS ITEM</bold> </label>
+    <br>
+    <input type="text" name="price">
+    <br>
+    <br>
+    <input class="btn btn-success" type="submit" value="PRICE">
+    </form>
+{% endblock %}

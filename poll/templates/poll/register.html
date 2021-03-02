@@ -1,0 +1,58 @@
+{% extends "poll/layout.html" %}
+{% load static %}
+{% block title %}
+     Register
+{% endblock %}
+{% block body %}
+
+       <div class="container" sytle="">
+         <h1> Register </h1>
+         <hr>
+       {% if form.non_field_errors %}
+            {% for u in form.non_field_errors %}
+                <div>{{ u }}</div>
+                <br>
+            {% endfor %}
+       {% endif %}
+          <form action="{% url 'poll:register' %}" method="POST">
+            {% csrf_token %}
+            <strong> {{ form.username.errors }}</strong>
+            <label> username </label>
+            <br>
+            {{form.username}}
+            <br>
+            <strong> {{ form.email.errors}}</strong>
+            <label> Email </label>
+            <br>
+            {{form.email}}
+            <br>
+            <label> First Name </label>
+            <br>
+            {{form.first_name}}
+            <br>
+            <label> Last Name </label>
+            <br>
+            {{form.last_name}}
+            <br>
+            <label> password </label>
+            <br>
+            {{form.password}}
+            <br>
+            <label> confirm password </label>
+            <br>
+            {{form.c_password}}
+            <br>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Register">
+          </form>
+        </div>
+        <div class="f1"class="p-3 mb-2 bg-dark text-white">
+
+
+            <span style="font-family:'Indie Flower';text-shadow: 0.1em 0.1em blue;margin-left:0em;">Auction in my style</span>
+            <span style="float:left">Neevetha.S(122015068)</span>
+            <br>
+            <span style="font-family:'Indie Flower';text-shadow: 0.1em 0.1em blue;margin-left:10em;"> Letzz get the party started </span>
+      
+        </div>
+{% endblock %}

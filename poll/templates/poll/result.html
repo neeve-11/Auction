@@ -1,0 +1,19 @@
+{% extends "poll/pfilelout.html" %}
+
+{% load static %}
+{% block title %}
+   Result
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+<h1 style="background-color:black;color:white;height:5em;width:100%;text-align:center;padding-top:2em;border-radius:1em;">Result</h1>
+
+   <hr>
+    <h2 style="text-align:center;padding-top:3em;">{{ messages }}</h2>
+
+
+</div>
+<img style="padding-top:7em;display:block;margin-left:auto;margin:auto;bottom:2em;" src="{% static '/media/seal.jpg' %}">
+{% endblock %}

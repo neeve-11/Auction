@@ -1,0 +1,18 @@
+{% extends "poll/pfilelout.html" %}
+{% block title %}
+{{ user.username}} - Inbox
+{% endblock %}
+{% block body %}
+
+
+  <h1 style="background-color:black;color:white;height:5em;width:100%;text-align:center;padding-top:2em;border-radius:1em;"> Welcome {{ user.username }}</h1>
+
+  <h2>Profile</h2>
+  <hr>
+  <span style="font-family:'Indie Flower';"><h2>First Name   : {{ user.first_name }}</h2></span>  <br>
+  <span style="font-family:'Indie Flower';"><h2>Last Name   : {{ user.last_name }}</h2></span>  <br>
+  <span style="font-family:'Indie Flower';"><h2>Email   : {{ user.email }}</h2></span>  <br>
+  <span style="font-family:'Indie Flower';"><h2>username   : {{ user.username }}</h2></span>  <br>
+
+
+{% endblock %}
